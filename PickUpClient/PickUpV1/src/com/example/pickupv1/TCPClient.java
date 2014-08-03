@@ -8,7 +8,7 @@ import java.net.Socket;
 public class TCPClient {
 	
 	 	private String serverMessage;
-	    public static final String SERVERIP = "192.168.2.2"; // Change it depending on the machine and network connected to
+	    public static final String SERVERIP = "192.168.2.11"; // Change it depending on the machine and network connected to
 	    public static final int SERVERPORT = 4444;
 	    private OnMessageReceived mMessageListener = null;
 	    private boolean mRun = false;
@@ -70,6 +70,7 @@ public class TCPClient {
 	                    if (serverMessage != null && mMessageListener != null) {
 	                        //call the method messageReceived from MyActivity class
 	                        mMessageListener.messageReceived(serverMessage);
+	                       // System.out.println(serverMessage);
 	                    }
 	                    serverMessage = null;
 	 

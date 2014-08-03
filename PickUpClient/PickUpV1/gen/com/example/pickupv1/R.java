@@ -1190,7 +1190,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f060019;
         public static final int action_menu_presenter=0x7f06001a;
         public static final int action_mode_close_button=0x7f060027;
-        public static final int action_settings=0x7f060046;
+        public static final int action_settings=0x7f060047;
         public static final int activity_chooser_view_content=0x7f060028;
         public static final int always=0x7f06000f;
         public static final int beginning=0x7f060014;
@@ -1216,7 +1216,7 @@ containing a value of this type.
         public static final int list=0x7f06003f;
         public static final int listMode=0x7f060005;
         public static final int list_item=0x7f06002c;
-        public static final int list_item_text_view=0x7f060044;
+        public static final int list_item_text_view=0x7f060046;
         public static final int map=0x7f060045;
         public static final int middle=0x7f060015;
         public static final int never=0x7f06000d;
@@ -1247,6 +1247,7 @@ containing a value of this type.
         public static final int terrain=0x7f060003;
         public static final int title=0x7f06002e;
         public static final int top_action_bar=0x7f060023;
+        public static final int tv_location=0x7f060044;
         public static final int up=0x7f060024;
         public static final int useLogo=0x7f060007;
         public static final int withText=0x7f060010;
@@ -1303,15 +1304,18 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int activity_main=0x7f030017;
         public static final int activity_map=0x7f030018;
-        public static final int fragment_main=0x7f030019;
-        public static final int fragment_map=0x7f03001a;
-        public static final int list_item=0x7f03001b;
-        public static final int map_layout=0x7f03001c;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
+        public static final int activity_map_touch=0x7f030019;
+        public static final int fragment_main=0x7f03001a;
+        public static final int fragment_map=0x7f03001b;
+        public static final int fragment_map_touch=0x7f03001c;
+        public static final int list_item=0x7f03001d;
+        public static final int map_layout=0x7f03001e;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001f;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
         public static final int map=0x7f0c0001;
+        public static final int map_touch=0x7f0c0002;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1455,6 +1459,7 @@ containing a value of this type.
          */
         public static final int location_client_powered_by_google=0x7f07001a;
         public static final int title_activity_map=0x7f07002b;
+        public static final int title_activity_map_touch=0x7f07002c;
     }
     public static final class style {
         /** 

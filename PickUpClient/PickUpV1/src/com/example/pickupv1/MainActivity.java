@@ -1,10 +1,13 @@
 package com.example.pickupv1;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,6 +26,8 @@ public class MainActivity extends Activity {
     private ArrayList<String> arrayList;
     private MyCustomAdapter mAdapter;
     private TCPClient mTcpClient;
+    volatile static List<PickUpDriver> activeDrivers;
+
  
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -31,7 +36,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
  
         arrayList = new ArrayList<String>();
- 
+        activeDrivers = new LinkedList<PickUpDriver>();
         final EditText editText = (EditText) findViewById(R.id.editText);
         Button send = (Button)findViewById(R.id.send_button);
  
@@ -76,6 +81,7 @@ public class MainActivity extends Activity {
                 //here the messageReceived method is implemented
                 public void messageReceived(String message) {
                     //this method calls the onProgressUpdate
+                	//System.out.println("\nServer message : "+message);
                     publishProgress(message);
                 }
             });
@@ -86,13 +92,27 @@ public class MainActivity extends Activity {
  
         @Override
         protected void onProgressUpdate(String... values) {
+        	
             super.onProgressUpdate(values);
- 
+            
             //in the arrayList we add the messaged received from server
-            arrayList.add(values[0]);
+            System.out.println("\n Server Message"+values[0]);
+            
+            //Splitting server message to create a new driver info
+            String info[] = values[0].split(";");
+            String driverName = info[1];
+            double driverLongitude = Double.parseDouble(info[2]);
+            double driverLatitude = Double.parseDouble(info[3]);
+            
+            PickUpDriver newDriver = new PickUpDriver(driverName, driverLongitude, driverLatitude);
+            activeDrivers.add(newDriver);
+            Intent showMap = new Intent(MainActivity.this, MapTouchActivity.class);
+            showMap.putExtra("Message",values[0]);
+            startActivity(showMap);
+            // arrayList.add(values[0]);
             // notify the adapter that the data set has changed. This means that new message received
             // from server was added to the list
-            mAdapter.notifyDataSetChanged();
+           // mAdapter.notifyDataSetChanged();
         }
     }
 
